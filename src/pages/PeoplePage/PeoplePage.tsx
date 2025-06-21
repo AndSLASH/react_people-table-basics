@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { Loader } from '../Loader';
-import { People } from '../People/People';
+import { Loader } from '../../components/Loader';
+import { People } from '../../components/People';
 import { Person } from '../../types';
 import { getPeople } from '../../api';
 import { PeopleProvider } from '../../contexts';
@@ -15,7 +15,7 @@ export const PeoplePage: React.FC = () => {
     new Map(),
   );
 
-  const { personSlug } = useParams<{ personSlug?: string }>();
+  const { slug: personSlug } = useParams<{ slug?: string }>();
 
   useEffect(() => {
     setLoading(true);
