@@ -27,15 +27,13 @@ export const People: React.FC<PeopleProps> = ({
       </thead>
 
       <tbody>
-        {people.map(person => {
-          return (
-            <Person
-              key={person.slug}
-              person={person}
-              selectedPersonSlug={selectedPersonSlug}
-            />
-          );
-        })}
+        {people.map(person => (
+          <Person
+            key={person.slug}
+            person={person}
+            selectedPersonSlug={selectedPersonSlug}
+          />
+        ))}
       </tbody>
     </table>
   );

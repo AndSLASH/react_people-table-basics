@@ -32,57 +32,43 @@ export const Person: React.FC<PersonProps> = ({
   const isSelected = selectedPersonSlug === person.slug;
 
   return (
-    <>
-      <tr
-        data-cy="person"
-        className={cn({
-          'has-background-warning': isSelected,
-        })}
-      >
-        <td>
-          <PersonLink
-            to={`/people/${person.slug}`}
-            displayText={person.name}
-            isFemale={person.sex === 'f'}
-          />
-        </td>
+    <tr
+      data-cy="person"
+      className={cn({
+        'has-background-warning': isSelected,
+      })}
+    >
+      <td>
+        <PersonLink person={person} />
+      </td>
 
-        <td>{person.sex}</td>
-        <td>{person.born}</td>
-        <td>{person.died}</td>
+      <td>{person.sex}</td>
+      <td>{person.born}</td>
+      <td>{person.died}</td>
 
-        <td>
-          {person.motherName ? (
-            motherPersonInLookup ? (
-              <PersonLink
-                to={`/people/${motherPersonInLookup.slug}`}
-                displayText={motherPersonInLookup.name}
-                isFemale={motherPersonInLookup.sex === 'f'}
-              />
-            ) : (
-              <span>{person.motherName}</span>
-            )
+      <td>
+        {person.motherName ? (
+          motherPersonInLookup ? (
+            <PersonLink person={motherPersonInLookup} />
           ) : (
-            '-'
-          )}
-        </td>
+            <span>{person.motherName}</span>
+          )
+        ) : (
+          '-'
+        )}
+      </td>
 
-        <td>
-          {person.fatherName ? (
-            fatherPersonInLookup ? (
-              <PersonLink
-                to={`/people/${fatherPersonInLookup.slug}`}
-                displayText={fatherPersonInLookup.name}
-                isFemale={false}
-              />
-            ) : (
-              <span>{person.fatherName}</span>
-            )
+      <td>
+        {person.fatherName ? (
+          fatherPersonInLookup ? (
+            <PersonLink person={fatherPersonInLookup} />
           ) : (
-            '-'
-          )}
-        </td>
-      </tr>
-    </>
+            <span>{person.fatherName}</span>
+          )
+        ) : (
+          '-'
+        )}
+      </td>
+    </tr>
   );
 };
